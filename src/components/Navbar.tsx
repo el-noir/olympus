@@ -20,11 +20,12 @@ const Navbar = () => {
       }`}
     >
       <div className="container flex h-16 items-center justify-between">
-        <a href="/" className="flex items-center gap-2.5 text-heading font-medium text-base tracking-tight">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-accent">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        <a href="/" className="flex items-center gap-2 text-heading font-medium text-base tracking-tight">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-accent">
+            <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+            <path d="M12 12L3 7m9 5l9-5m-9 5v10" stroke="currentColor" strokeWidth="1.5"/>
           </svg>
-          Nexus
+          <span className="font-serif text-lg">Olympus</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8 text-[13px] text-body">
@@ -35,9 +36,14 @@ const Navbar = () => {
           <a href="#" className="hover:text-heading transition-colors">Docs</a>
         </div>
 
-        <button className="hidden md:block text-[13px] bg-heading text-background px-5 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
-          Get Started
-        </button>
+        <div className="hidden md:flex items-center gap-3">
+          <button className="text-[13px] text-body hover:text-heading transition-colors px-4 py-2">
+            Sign in
+          </button>
+          <button className="text-[13px] bg-heading text-background px-5 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
+            Get Started
+          </button>
+        </div>
 
         <button className="md:hidden text-heading" onClick={() => setOpen(!open)}>
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -50,9 +56,10 @@ const Navbar = () => {
           <a href="#features" className="block text-sm text-body py-1">Features</a>
           <a href="#how-it-works" className="block text-sm text-body py-1">How it works</a>
           <a href="#faq" className="block text-sm text-body py-1">FAQ</a>
-          <button className="w-full text-sm bg-heading text-background px-4 py-2.5 rounded-lg font-medium mt-3">
-            Get Started
-          </button>
+          <div className="flex gap-3 mt-3">
+            <button className="flex-1 text-sm text-body border border-border px-4 py-2.5 rounded-lg">Sign in</button>
+            <button className="flex-1 text-sm bg-heading text-background px-4 py-2.5 rounded-lg font-medium">Get Started</button>
+          </div>
         </div>
       )}
     </nav>
