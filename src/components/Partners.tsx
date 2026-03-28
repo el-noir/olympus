@@ -1,19 +1,31 @@
 import { motion } from "framer-motion";
 
 const Partners = () => (
-  <section className="py-16 border-y border-border">
+  <section className="py-20">
     <div className="container">
-      <p className="text-center text-xs text-dim uppercase tracking-widest mb-8">Partnered with</p>
+      <motion.h2
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="font-serif text-xl sm:text-2xl text-heading text-center mb-10"
+      >
+        Partnered with
+      </motion.h2>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="flex flex-wrap items-center justify-center gap-10 text-dim"
+        className="grid grid-cols-3 max-w-3xl mx-auto border border-border rounded-xl overflow-hidden"
       >
-        {["Y Combinator", "AWS", "Google Cloud", "LangChain"].map((name) => (
-          <span key={name} className="text-sm font-medium tracking-wide text-muted-foreground/60 hover:text-muted-foreground transition-colors">
+        {["Y Combinator", "AWS", "Google Cloud"].map((name, i) => (
+          <div
+            key={name}
+            className={`flex items-center justify-center py-6 text-body text-sm font-medium tracking-wide ${
+              i < 2 ? "border-r border-border" : ""
+            }`}
+          >
             {name}
-          </span>
+          </div>
         ))}
       </motion.div>
     </div>

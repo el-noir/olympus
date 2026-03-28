@@ -1,67 +1,84 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const steps = [
   {
-    num: "01",
-    icon: "📦",
-    title: "Import your project",
-    desc: "Connect your GitHub repo or run nexus init in any LangGraph project. We detect your framework and entrypoint automatically.",
+    num: "1",
+    tab: "IMPORT YOUR PROJECT",
+    title: "Import Your Project",
+    desc: "Import a LangGraph project from GitHub or generate a new agent from a prompt or template.",
   },
   {
-    num: "02",
-    icon: "🚀",
-    title: "One command deploy",
-    desc: "Run nexus deploy. Your agent runs in an isolated auto-scaling sandbox with built-in logging and observability in under 30 seconds.",
+    num: "2",
+    tab: "ONE CLICK DEPLOY",
+    title: "One click deploy",
+    desc: "Click deploy or run nexus deploy. Your agent runs in an auto-scaling sandbox with built-in logging and observability.",
   },
   {
-    num: "03",
-    icon: "🔍",
-    title: "Iterate with real data",
-    desc: "View tool traces, inspect output logs, and refine your agent using real production data. Push a new version — zero downtime.",
+    num: "3",
+    tab: "ITERATE",
+    title: "Iterate",
+    desc: "View tool traces, inspect output logs, and refine your agent using real production data. Infrastructure scales automatically.",
   },
 ];
 
-const HowItWorks = () => (
-  <section id="how-it-works" className="py-24">
-    <div className="container max-w-4xl">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <p className="text-xs text-dim uppercase tracking-widest mb-3">How it works</p>
-        <h2 className="text-3xl sm:text-4xl font-bold">
-          From notebook<br />to production.
-        </h2>
-        <p className="text-text-secondary mt-4 max-w-lg mx-auto">
-          Nexus wraps your existing LangGraph agent. No code changes. No config files. No DevOps.
-        </p>
-      </motion.div>
+const HowItWorks = () => {
+  const [active, setActive] = useState(0);
 
-      <div className="space-y-6">
-        {steps.map((step, i) => (
-          <motion.div
-            key={step.num}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="surface-card p-6 sm:p-8 flex gap-6"
-          >
-            <div className="flex-shrink-0">
-              <span className="text-dim font-mono text-xs">{step.num}</span>
-              <p className="text-2xl mt-1">{step.icon}</p>
+  return (
+    <section id="how-it-works" className="py-24 section-divider">
+      <div className="container max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-14"
+        >
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-heading leading-tight">
+            Ship LangGraph agents<br />with one command
+          </h2>
+        </motion.div>
+
+        {/* Tabs */}
+        <div className="flex items-center justify-center gap-0 mb-10 border-b border-border">
+          {steps.map((step, i) => (
+            <button
+              key={step.num}
+              onClick={() => setActive(i)}
+              className={`flex items-center gap-2 px-6 py-3 text-xs tracking-widest transition-colors border-b-2 ${
+                active === i
+                  ? "text-heading border-accent"
+                  : "text-body border-transparent hover:text-heading"
+              }`}
+            >
+              <span className="font-mono">{step.num}.</span>
+              {step.tab}
+            </button>
+          ))}
+        </div>
+
+        {/* Content */}
+        <motion.div
+          key={active}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="text-center"
+        >
+          <h3 className="font-serif text-2xl text-heading mb-4">{steps[active].title}</h3>
+          <p className="text-body max-w-lg mx-auto leading-relaxed">{steps[active].desc}</p>
+          {/* Placeholder for step image */}
+          <div className="mt-8 rounded-xl border border-border bg-card dot-grid h-[240px] sm:h-[320px] flex items-center justify-center">
+            <div className="font-mono text-sm text-body/40">
+              {active === 0 && "→ nexus init or connect GitHub"}
+              {active === 1 && "→ nexus deploy · Deployed in 22s"}
+              {active === 2 && "→ Real-time traces & logs"}
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-foreground">{step.title}</h3>
-              <p className="text-text-secondary text-sm mt-2 leading-relaxed">{step.desc}</p>
-            </div>
-          </motion.div>
-        ))}
+          </div>
+        </motion.div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default HowItWorks;
