@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const CTA = () => (
+const BottomCTA = () => (
   <section className="py-24 section-divider">
     <div className="container max-w-3xl text-center">
       <motion.div
@@ -10,7 +10,7 @@ const CTA = () => (
         className="space-y-8"
       >
         <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-heading leading-tight">
-          Start building<br /><span className="italic">powerful agents</span>
+          Push less. Deploy more.
         </h2>
         <div>
           <button className="border border-border text-heading px-8 py-3 rounded-lg text-sm font-medium hover:bg-secondary transition-colors">
@@ -22,4 +22,4 @@ const CTA = () => (
   </section>
 );
 
-export default CTA;
+export default BottomCTA;

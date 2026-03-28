@@ -2,70 +2,63 @@ import { motion } from "framer-motion";
 
 const features = [
   {
-    icon: "⚡",
-    title: "Long-running, auto-scaling sandboxes",
-    desc: "Deploy agents that run for hours or days in isolated sandboxes. Infrastructure scales on demand so you can focus on building.",
-    demo: (
-      <div className="mt-4 space-y-2 font-mono text-[11px]">
-        <div className="flex justify-between"><span className="text-dim">agent</span><span className="text-primary">● running · 2h 14m</span></div>
-        <div className="flex justify-between"><span className="text-dim">instances</span><span className="text-foreground">3 / auto</span></div>
-        <div className="flex justify-between"><span className="text-dim">memory</span><span className="text-foreground">312 MB</span></div>
-        <div className="flex justify-between"><span className="text-dim">billing</span><span className="text-foreground">$0.0042 / sec-run</span></div>
-      </div>
+    title: "Long running, auto-scaling sandboxes",
+    desc: "Deploy agents that run for hours or days in isolated sandboxes. Infrastructure scales on demand so you can focus on building, not babysitting.",
+    icon: (
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-accent">
+        <rect x="4" y="8" width="32" height="24" rx="4" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M12 20h4m4 0h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M12 16h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M12 24h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
     ),
   },
   {
-    icon: "🔌",
     title: "MCP gateway",
     desc: "Skip the integration spaghetti. Our MCP gateway gives agents access to any tool or API while you control permissions from a single dashboard.",
-    demo: (
-      <div className="mt-4">
-        <div className="flex flex-wrap gap-2">
-          {["Slack", "GitHub", "Postgres", "Notion", "Gmail"].map((t) => (
-            <span key={t} className="text-[10px] bg-secondary text-secondary-foreground px-2 py-1 rounded">{t}</span>
-          ))}
-          <span className="text-[10px] text-dim px-2 py-1">+38 more</span>
-        </div>
-        <p className="text-[10px] text-dim mt-3">Permissions managed centrally · Zero credential sprawl</p>
-      </div>
+    icon: (
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-accent">
+        <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M20 6v28M6 20h28" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="20" cy="20" r="6" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
     ),
   },
   {
-    icon: "📡",
+    title: "One click deploy",
+    desc: "One click. Your LangGraph agent is live. Nexus manages provisioning, versioning, and execution behind the scenes.",
+    icon: (
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-accent">
+        <path d="M20 6v20m0 0l-7-7m7 7l7-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8 30h24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
     title: "Agent observability",
-    desc: "Full visibility into every agent decision. Trace tool calls, inspect outputs, and debug in real time.",
-    demo: (
-      <div className="mt-4 space-y-1.5 font-mono text-[11px]">
-        <p><span className="text-primary">✓</span> <span className="text-dim">agent_start +0ms</span></p>
-        <p><span className="text-foreground">⬡</span> <span className="text-dim">llm_call +12ms · 1.2k tok</span></p>
-        <p><span className="text-foreground">⚙</span> <span className="text-dim">tool_call +840ms</span></p>
-        <p><span className="text-primary">✓</span> <span className="text-dim">complete +3.1s · $0.0018</span></p>
-      </div>
+    desc: "Full visibility into every agent decision. Trace tool calls, inspect outputs, and debug in real time — not after something breaks.",
+    icon: (
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-accent">
+        <circle cx="20" cy="18" r="12" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M28 26l6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="20" cy="18" r="5" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
     ),
   },
   {
-    icon: "🔀",
     title: "Model router",
     desc: "Use any model — GPT-4o, Gemini, Llama, or Claude. Swap the model without touching your LangGraph code. Route by cost, latency, or task type.",
-    demo: (
-      <div className="mt-4 space-y-2 font-mono text-[11px]">
-        {[
-          { task: "complex reasoning", model: "claude-opus-4" },
-          { task: "fast tasks", model: "gpt-4o-mini" },
-          { task: "code generation", model: "deepseek-v3" },
-        ].map((r) => (
-          <div key={r.task} className="flex justify-between">
-            <span className="text-dim">{r.task}</span>
-            <span className="text-foreground">{r.model}</span>
-          </div>
-        ))}
-      </div>
+    icon: (
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="text-accent">
+        <path d="M8 20h8m8 0h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M16 20l4-8 4 8-4 8-4-8z" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
     ),
   },
 ];
 
 const Features = () => (
-  <section id="features" className="py-24 bg-surface/30">
+  <section id="features" className="py-24 section-divider">
     <div className="container max-w-5xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -73,29 +66,26 @@ const Features = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <p className="text-xs text-dim uppercase tracking-widest mb-3">Features</p>
-        <h2 className="text-3xl sm:text-4xl font-bold">
-          Everything your agent<br />needs in production.
-        </h2>
-        <p className="text-text-secondary mt-4 max-w-lg mx-auto">
-          The infrastructure primitives every team ends up rebuilding — built in and on by default.
-        </p>
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-heading">Features</h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="space-y-6">
         {features.map((f, i) => (
           <motion.div
             key={f.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="surface-card p-6 hover:border-primary/30 transition-colors"
+            transition={{ delay: i * 0.08 }}
+            className="border border-border rounded-xl bg-card p-8 sm:p-10 flex flex-col sm:flex-row gap-6 hover:border-accent/30 transition-colors group"
           >
-            <p className="text-2xl mb-3">{f.icon}</p>
-            <h3 className="font-semibold text-foreground">{f.title}</h3>
-            <p className="text-sm text-text-secondary mt-2 leading-relaxed">{f.desc}</p>
-            {f.demo}
+            <div className="flex-shrink-0 opacity-60 group-hover:opacity-100 transition-opacity">
+              {f.icon}
+            </div>
+            <div>
+              <h3 className="font-serif text-xl text-heading mb-3">{f.title}</h3>
+              <p className="text-body text-sm leading-relaxed max-w-xl">{f.desc}</p>
+            </div>
           </motion.div>
         ))}
       </div>
