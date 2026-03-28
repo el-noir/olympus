@@ -6,19 +6,46 @@ const steps = [
     num: "1",
     tab: "IMPORT YOUR PROJECT",
     title: "Import Your Project",
-    desc: "Import a LangGraph project from GitHub or generate a new agent from a prompt or template.",
+    desc: "Import a LangGraph project from GitHub or run olympus init in any project. We detect your framework and entrypoint automatically.",
+    terminal: (
+      <div className="font-mono text-xs sm:text-sm space-y-1 text-left">
+        <p><span className="text-accent">$</span> olympus init</p>
+        <p className="text-body">  Detected LangGraph agent (agent.py)</p>
+        <p className="text-body">  Found 3 tool definitions</p>
+        <p className="text-accent">  ✓ Project initialized</p>
+      </div>
+    ),
   },
   {
     num: "2",
     tab: "ONE CLICK DEPLOY",
     title: "One click deploy",
-    desc: "Click deploy or run nexus deploy. Your agent runs in an auto-scaling sandbox with built-in logging and observability.",
+    desc: "Click deploy or run olympus deploy. Your agent runs in an auto-scaling sandbox with built-in logging and observability.",
+    terminal: (
+      <div className="font-mono text-xs sm:text-sm space-y-1 text-left">
+        <p><span className="text-accent">$</span> olympus deploy</p>
+        <p className="text-body">  Building sandbox image...</p>
+        <p className="text-body">  Provisioning microVM...</p>
+        <p className="text-body">  Configuring autoscaler...</p>
+        <p className="text-accent">  ✓ Deployed in 22s</p>
+        <p className="text-heading">  → https://my-agent.olympus.run</p>
+      </div>
+    ),
   },
   {
     num: "3",
     tab: "ITERATE",
-    title: "Iterate",
-    desc: "View tool traces, inspect output logs, and refine your agent using real production data. Infrastructure scales automatically.",
+    title: "Iterate with real data",
+    desc: "View tool traces, inspect output logs, and refine your agent using real production data. Push new versions with zero downtime.",
+    terminal: (
+      <div className="font-mono text-xs sm:text-sm space-y-1.5 text-left">
+        <p className="text-body">  Latest run — trace</p>
+        <p><span className="text-accent">✓</span> agent_start <span className="text-body">+0ms</span></p>
+        <p><span className="text-heading">⬡</span> llm_call <span className="text-body">1.2k tok · +14ms</span></p>
+        <p><span className="text-heading">⚙</span> tool: web_search <span className="text-body">+840ms</span></p>
+        <p><span className="text-accent">✓</span> agent_complete <span className="text-body">+3.1s · $0.0018</span></p>
+      </div>
+    ),
   },
 ];
 
@@ -35,17 +62,19 @@ const HowItWorks = () => {
           className="text-center mb-14"
         >
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-heading leading-tight">
-            Ship LangGraph agents<br />with one command
+            Ship LangGraph agents
+            <br />
+            <span className="italic">with one command</span>
           </h2>
         </motion.div>
 
         {/* Tabs */}
-        <div className="flex items-center justify-center gap-0 mb-10 border-b border-border">
+        <div className="flex items-center justify-center gap-0 mb-10 border-b border-border overflow-x-auto">
           {steps.map((step, i) => (
             <button
               key={step.num}
               onClick={() => setActive(i)}
-              className={`flex items-center gap-2 px-6 py-3 text-xs tracking-widest transition-colors border-b-2 ${
+              className={`flex items-center gap-2 px-4 sm:px-6 py-3 text-[10px] sm:text-xs tracking-widest transition-colors border-b-2 whitespace-nowrap ${
                 active === i
                   ? "text-heading border-accent"
                   : "text-body border-transparent hover:text-heading"
@@ -65,14 +94,21 @@ const HowItWorks = () => {
           transition={{ duration: 0.4 }}
           className="text-center"
         >
-          <h3 className="font-serif text-2xl text-heading mb-4">{steps[active].title}</h3>
-          <p className="text-body max-w-lg mx-auto leading-relaxed">{steps[active].desc}</p>
-          {/* Placeholder for step image */}
-          <div className="mt-8 rounded-xl border border-border bg-card dot-grid h-[240px] sm:h-[320px] flex items-center justify-center">
-            <div className="font-mono text-sm text-body/40">
-              {active === 0 && "→ nexus init or connect GitHub"}
-              {active === 1 && "→ nexus deploy · Deployed in 22s"}
-              {active === 2 && "→ Real-time traces & logs"}
+          <h3 className="font-serif text-2xl text-heading mb-3">{steps[active].title}</h3>
+          <p className="text-body max-w-lg mx-auto leading-relaxed text-sm">{steps[active].desc}</p>
+
+          {/* Terminal mockup */}
+          <div className="mt-8 rounded-xl border border-border bg-card overflow-hidden">
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-border">
+              <div className="flex gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-muted" />
+                <span className="w-2.5 h-2.5 rounded-full bg-muted" />
+                <span className="w-2.5 h-2.5 rounded-full bg-muted" />
+              </div>
+              <span className="text-[10px] text-body font-mono ml-2">~/my-agent — bash</span>
+            </div>
+            <div className="p-6 sm:p-8">
+              {steps[active].terminal}
             </div>
           </div>
         </motion.div>

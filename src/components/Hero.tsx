@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-philosophy.jpg";
+import heroImage from "@/assets/hero-olympus.jpg";
 
 const Hero = () => (
   <section className="relative pt-32 pb-0 overflow-hidden">
-    {/* Subtle radial glow behind heading */}
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_center,hsl(210_60%_55%/0.06),transparent_70%)] pointer-events-none" />
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] bg-[radial-gradient(ellipse_at_center,hsl(210_60%_55%/0.07),transparent_70%)] pointer-events-none" />
 
     <div className="container relative z-10 text-center">
       <motion.div
@@ -38,7 +37,6 @@ const Hero = () => (
         One command. Auto-scaling. Full observability.
       </motion.p>
 
-      {/* CTA buttons */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -46,7 +44,7 @@ const Hero = () => (
         className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
       >
         <button className="bg-heading text-background px-7 py-3 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity">
-          Get started free →
+          Start deploying free →
         </button>
         <button className="text-body text-sm hover:text-heading transition-colors border border-border px-7 py-3 rounded-lg">
           Read the docs
@@ -63,7 +61,7 @@ const Hero = () => (
       </motion.p>
     </div>
 
-    {/* Hero image card */}
+    {/* Hero image */}
     <motion.div
       initial={{ opacity: 0, y: 50, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -73,19 +71,18 @@ const Hero = () => (
       <div className="relative rounded-2xl overflow-hidden border border-border/60 glow-card">
         <img
           src={heroImage}
-          alt="Classical philosophy meets digital intelligence"
-          className="w-full h-[300px] sm:h-[420px] object-cover"
+          alt="Mount Olympus temple dissolving into digital constellation"
+          className="w-full h-[300px] sm:h-[440px] object-cover object-center"
           width={1920}
           height={800}
         />
-        {/* Overlay content */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12 flex flex-col items-center">
           <p className="font-serif text-xl sm:text-2xl md:text-3xl text-heading mb-5 text-center">
             One command to production
           </p>
           <div className="font-mono text-sm bg-card/80 backdrop-blur-md border border-border/60 px-8 py-3 rounded-xl text-heading tracking-wide">
-            <span className="text-accent mr-2">$</span>nexus deploy
+            <span className="text-accent mr-2">$</span>olympus deploy
           </div>
         </div>
       </div>
