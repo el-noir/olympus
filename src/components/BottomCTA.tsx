@@ -9,11 +9,11 @@ const BottomCTA = () => (
         viewport={{ once: true }}
         className="space-y-8"
       >
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-heading leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-heading leading-tight tracking-tight">
           Push less.<br />Deploy more.
         </h2>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="bg-heading text-background px-8 py-3 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity">
+          <button className="bg-heading text-background px-8 py-3 font-mono text-xs uppercase tracking-widest font-medium hover:bg-heading/90 transition-colors">
             Get Started →
           </button>
         </div>

@@ -44,19 +44,19 @@ const FAQ = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="font-serif text-3xl sm:text-4xl text-heading text-center mb-14"
+        className="text-3xl sm:text-4xl font-bold text-heading text-center mb-14 tracking-tight"
       >
         FAQs
       </motion.h2>
 
-      <Accordion type="single" collapsible className="space-y-3">
+      <Accordion type="single" collapsible className="space-y-0">
         {faqs.map((faq, i) => (
           <AccordionItem
             key={i}
             value={`faq-${i}`}
-            className="border border-border rounded-xl px-6 bg-card data-[state=open]:border-accent/20"
+            className="border border-border px-6 bg-card data-[state=open]:bg-surface-elevated -mt-px"
           >
-            <AccordionTrigger className="text-sm font-medium text-heading hover:no-underline py-5">
+            <AccordionTrigger className="text-sm font-medium text-heading hover:no-underline py-5 font-mono">
               {faq.q}
             </AccordionTrigger>
             <AccordionContent className="text-sm text-body leading-relaxed pb-5">

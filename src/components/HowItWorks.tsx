@@ -3,8 +3,8 @@ import { useState } from "react";
 
 const steps = [
   {
-    num: "1",
-    tab: "IMPORT YOUR PROJECT",
+    num: "01",
+    tab: "IMPORT",
     title: "Import Your Project",
     desc: "Import a LangGraph project from GitHub or run olympus init in any project. We detect your framework and entrypoint automatically.",
     terminal: (
@@ -17,8 +17,8 @@ const steps = [
     ),
   },
   {
-    num: "2",
-    tab: "ONE CLICK DEPLOY",
+    num: "02",
+    tab: "DEPLOY",
     title: "One click deploy",
     desc: "Click deploy or run olympus deploy. Your agent runs in an auto-scaling sandbox with built-in logging and observability.",
     terminal: (
@@ -33,7 +33,7 @@ const steps = [
     ),
   },
   {
-    num: "3",
+    num: "03",
     tab: "ITERATE",
     title: "Iterate with real data",
     desc: "View tool traces, inspect output logs, and refine your agent using real production data. Push new versions with zero downtime.",
@@ -61,10 +61,10 @@ const HowItWorks = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-heading leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-heading leading-tight tracking-tight">
             Ship LangGraph agents
             <br />
-            <span className="italic">with one command</span>
+            <span className="gradient-text">with one command</span>
           </h2>
         </motion.div>
 
@@ -74,13 +74,13 @@ const HowItWorks = () => {
             <button
               key={step.num}
               onClick={() => setActive(i)}
-              className={`flex items-center gap-2 px-4 sm:px-6 py-3 text-[10px] sm:text-xs tracking-widest transition-colors border-b-2 whitespace-nowrap ${
+              className={`flex items-center gap-2 px-4 sm:px-6 py-3 font-mono text-[10px] sm:text-xs tracking-widest transition-colors border-b-2 whitespace-nowrap ${
                 active === i
                   ? "text-heading border-accent"
                   : "text-body border-transparent hover:text-heading"
               }`}
             >
-              <span className="font-mono">{step.num}.</span>
+              <span>{step.num}</span>
               {step.tab}
             </button>
           ))}
@@ -89,23 +89,18 @@ const HowItWorks = () => {
         {/* Content */}
         <motion.div
           key={active}
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.3 }}
           className="text-center"
         >
-          <h3 className="font-serif text-2xl text-heading mb-3">{steps[active].title}</h3>
+          <h3 className="text-2xl font-semibold text-heading mb-3 tracking-tight">{steps[active].title}</h3>
           <p className="text-body max-w-lg mx-auto leading-relaxed text-sm">{steps[active].desc}</p>
 
           {/* Terminal mockup */}
-          <div className="mt-8 rounded-xl border border-border bg-card overflow-hidden">
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-border">
-              <div className="flex gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-muted" />
-                <span className="w-2.5 h-2.5 rounded-full bg-muted" />
-                <span className="w-2.5 h-2.5 rounded-full bg-muted" />
-              </div>
-              <span className="text-[10px] text-body font-mono ml-2">~/my-agent — bash</span>
+          <div className="mt-8 border border-border bg-card overflow-hidden">
+            <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-surface-elevated">
+              <span className="font-mono text-[10px] text-body tracking-wider">~/my-agent — bash</span>
             </div>
             <div className="p-6 sm:p-8">
               {steps[active].terminal}
