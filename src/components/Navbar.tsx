@@ -22,7 +22,7 @@ const Navbar = () => {
     >
       <div className="container flex h-14 items-center justify-between">
         <a href="/" className="flex items-center gap-2 text-heading font-mono text-sm tracking-tight">
-          <span className="text-accent font-mono font-semibold text-base">//</span>
+          <img src={olympusLogo} alt="Olympus" className="w-5 h-5 invert" width={20} height={20} />
           <span className="font-semibold tracking-wide uppercase text-xs">Olympus</span>
         </a>
 
