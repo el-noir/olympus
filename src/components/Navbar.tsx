@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import olympusLogo from "@/assets/olympus-logo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);

@@ -1,3 +1,5 @@
+import olympusLogo from "@/assets/olympus-logo.png";
+
 const Footer = () => (
   <footer className="section-divider py-16">
     <div className="container">
