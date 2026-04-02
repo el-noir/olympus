@@ -1,10 +1,12 @@
+import olympusLogo from "@/assets/olympus-logo.png";
+
 const Footer = () => (
   <footer className="section-divider py-16">
     <div className="container">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
         <div className="col-span-2 md:col-span-1">
           <div className="flex items-center gap-2 text-heading font-mono mb-3">
-            <span className="text-accent font-semibold text-base">//</span>
+            <img src={olympusLogo} alt="Olympus" className="w-5 h-5 invert" width={20} height={20} loading="lazy" />
             <span className="font-semibold text-xs uppercase tracking-widest">Olympus</span>
           </div>
           <p className="text-body text-xs leading-relaxed">
