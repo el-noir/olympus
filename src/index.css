@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,43 +6,44 @@
 
 @layer base {
   :root {
-    --background: 230 15% 5%;
-    --foreground: 40 20% 90%;
+    --background: 220 16% 4%;
+    --foreground: 220 10% 80%;
 
-    --card: 230 12% 8%;
-    --card-foreground: 40 20% 90%;
+    --card: 220 14% 7%;
+    --card-foreground: 220 10% 80%;
 
-    --popover: 230 12% 8%;
-    --popover-foreground: 40 20% 90%;
+    --popover: 220 14% 7%;
+    --popover-foreground: 220 10% 80%;
 
-    --primary: 40 20% 90%;
-    --primary-foreground: 230 15% 5%;
+    --primary: 220 10% 88%;
+    --primary-foreground: 220 16% 4%;
 
-    --secondary: 230 10% 12%;
-    --secondary-foreground: 40 10% 70%;
+    --secondary: 220 12% 10%;
+    --secondary-foreground: 220 8% 60%;
 
-    --muted: 230 8% 15%;
-    --muted-foreground: 230 8% 45%;
+    --muted: 220 10% 12%;
+    --muted-foreground: 220 6% 40%;
 
-    --accent: 210 60% 55%;
-    --accent-foreground: 40 20% 95%;
+    --accent: 220 80% 60%;
+    --accent-foreground: 220 10% 95%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 230 10% 15%;
-    --input: 230 10% 15%;
-    --ring: 210 60% 55%;
+    --border: 220 12% 14%;
+    --input: 220 12% 14%;
+    --ring: 220 80% 60%;
 
-    --radius: 0.75rem;
+    --radius: 0px;
 
-    /* Custom */
-    --heading: 40 15% 85%;
-    --body: 230 8% 55%;
-    --surface: 230 12% 8%;
-    --surface-elevated: 230 10% 11%;
-    --accent-blue: 210 60% 55%;
-    --glow-blue: 210 80% 60%;
+    /* Custom tokens */
+    --heading: 220 10% 90%;
+    --body: 220 6% 48%;
+    --surface: 220 14% 7%;
+    --surface-elevated: 220 12% 10%;
+    --accent-blue: 220 80% 60%;
+    --accent-purple: 270 60% 58%;
+    --glow-blue: 220 80% 60%;
   }
 }
 
@@ -57,10 +58,6 @@
 }
 
 @layer utilities {
-  .font-serif {
-    font-family: 'Playfair Display', Georgia, serif;
-  }
-
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
@@ -85,22 +82,13 @@
     background-color: hsl(var(--surface-elevated));
   }
 
-  .dot-grid {
-    background-image: radial-gradient(circle, hsl(var(--muted-foreground) / 0.12) 1px, transparent 1px);
-    background-size: 20px 20px;
+  .section-divider {
+    @apply border-t border-border;
   }
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--heading)), hsl(var(--accent-blue)));
-  }
-
-  .glow-card {
-    box-shadow: 0 0 60px -20px hsl(var(--glow-blue) / 0.08);
-  }
-
-  .section-divider {
-    @apply border-t border-border;
+    background-image: linear-gradient(90deg, hsl(var(--heading)), hsl(var(--accent-blue)));
   }
 
   @keyframes marquee {
@@ -119,5 +107,14 @@
 
   .fade-up {
     animation: fadeUp 0.7s ease-out forwards;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
   }
 }

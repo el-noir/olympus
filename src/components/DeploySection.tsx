@@ -9,14 +9,14 @@ const DeploySection = () => (
         viewport={{ once: true }}
         className="text-center mb-14"
       >
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-heading leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-heading leading-tight tracking-tight">
           Deploy your first agent
           <br />
-          in <span className="italic">seconds</span>
+          in <span className="gradient-text">seconds</span>
         </h2>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 gap-4 mb-12">
+      <div className="grid sm:grid-cols-2 gap-0 border border-border">
         {[
           { icon: "⚡", title: "Deploy automatically", desc: "From git push or with our CLI" },
           { icon: "🔒", title: "Isolated sandboxes", desc: "Per-execution microVM isolation" },
@@ -29,7 +29,9 @@ const DeploySection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08 }}
-            className="border border-border rounded-xl p-6 bg-card hover:border-accent/20 transition-colors group"
+            className={`p-6 hover:bg-surface-elevated transition-colors ${
+              i < 2 ? "border-b border-border" : ""
+            } ${i % 2 === 0 ? "sm:border-r border-border" : ""}`}
           >
             <span className="text-lg mb-2 block">{item.icon}</span>
             <p className="text-heading text-sm font-medium">{item.title}</p>
